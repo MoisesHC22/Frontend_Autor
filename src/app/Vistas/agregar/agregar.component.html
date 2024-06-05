@@ -1,0 +1,21 @@
+<h3>Crear nuevo Autor libro</h3>
+
+<form [formGroup]="Autor" (ngSubmit)="agregar()">
+
+    <div>
+        <label>Nombre:</label>
+        <input type="text" formControlName="nombre" placeholder="nombre">
+    </div>
+
+    <div>
+        <label>Apellido:</label>
+        <input type="text" formControlName="apellido" placeholder="apellido">
+    </div>
+
+    <div>
+        <label>Fecha de nacimiento:</label>
+        <input type="date" formControlName="fechaNacimiento" placeholder="fechaNacimiento">
+    </div>
+
+    <button type="submit" [disabled]="!Autor.valid">Crear</button>
+</form>
