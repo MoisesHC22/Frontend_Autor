@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonEngine } from '@angular/ssr';
 import { AutorInterface } from '../../Interfaces/autor.interface';
 import { FuncionesService } from '../../Services/funciones.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agregar',
@@ -14,6 +14,7 @@ import { FuncionesService } from '../../Services/funciones.service';
 })
 export class AgregarComponent {
 
+rutas = inject(Router);
 form = inject(FormBuilder);
 funciones = inject(FuncionesService);
 
@@ -33,6 +34,7 @@ agregar(){
 
   this.funciones.crear(data).subscribe(() => {
      console.log("success");
+     this.rutas.navigateByUrl('/Home');
   });
 }
 

@@ -1,12 +1,10 @@
+
+
 <nav>
-  <ul>
-    <li>
-      <a routerLink="/Home">Home</a>
-    </li>
-    <li>
-      <a routerLink="/Agregar">Agregar</a>
-    </li>
-  </ul>
+      <a routerLink="/Home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/Agregar" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Agregar</a>
 </nav>
+
+
 
 <router-outlet />
