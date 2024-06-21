@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgregarComponent } from './agregar.component';
+import { HomeAutComponent } from './home-aut.component';
 
-describe('AgregarComponent', () => {
-  let component: AgregarComponent;
-  let fixture: ComponentFixture<AgregarComponent>;
+describe('HomeAutComponent', () => {
+  let component: HomeAutComponent;
+  let fixture: ComponentFixture<HomeAutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AgregarComponent]
+      imports: [HomeAutComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AgregarComponent);
+    fixture = TestBed.createComponent(HomeAutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

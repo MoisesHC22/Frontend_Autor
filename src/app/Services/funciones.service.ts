@@ -36,13 +36,17 @@ export class FuncionesService {
       return this.httpClient.post(this.API_Libro + '/Libro/Crear', data);
    }
 
-   GetLibro(): Observable<any>{
+   GetLibros(): Observable<any>{
       return this.httpClient.get(this.API_Libro + '/Libro/Getlibros').pipe(res => res);
    }
 
-   GetLibros(LibreriaMaterialId: string): Observable<any>{
-      return this.httpClient.get(this.API_Libro + "/Autor/GetLibro?id=" + LibreriaMaterialId);
+   GetLibro(LibreriaMaterialId: string): Observable<any>{
+      return this.httpClient.get(this.API_Libro + "/Libro/GetLibro?id=" + LibreriaMaterialId);
    }
 
+   
+
+
+   
 }
 

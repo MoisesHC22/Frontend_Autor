@@ -1,7 +1,7 @@
 export interface LibroInterface{
-    LibreriaMaterialId?: string;
-    Titulo?: string;
-    FechaPublicacion?: Date;
-    Precio?: Float64Array;
-    AutorLibro?: string;
+    libreriaMaterialId?: string;
+    titulo?: string;
+    fechaPublicacion?: string;
+    precio?: number;
+    autorLibro?: string;
 }

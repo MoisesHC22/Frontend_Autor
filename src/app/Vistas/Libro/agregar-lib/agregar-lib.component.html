@@ -1,0 +1,31 @@
+<h1>Bienvendio a registra Libro</h1>
+
+<form [formGroup]="Libro" (ngSubmit)="agregar()" novalidate>
+
+<div>
+    <label>Titulo: </label>
+    <input type="text" class="form-control" id="titulo" formControlName="titulo"placeholder="Nombre del libro" required>
+</div>
+
+<div>
+    <label>Precio: </label>
+    <input type="number" class="form-control" id="precio" formControlName="precio"placeholder="$" required>
+</div>
+
+<div>
+    <label>Fecha de publicacion: </label>
+    <input type="date" class="form-control" id="fechaPublicacion" formControlName="fechaPublicacion" required>
+</div>
+
+<div>
+    <label>Selecciona un autor:</label>
+    <select class="form-control" id="autorLibro" formControlName="autorLibro" required>
+        <option value="" disabled selected>seleccione un autor</option>
+        <option *ngFor="let autor of AutorList" [value]="autor.autorLibroGuid">{{ autor.nombre}} {{autor.apellido}}</option>
+    </select>
+    
+</div>
+
+<button type="submit" class="btn btn-primary mt-3" [disabled]="!Libro.valid">Guardar</button>
+
+</form>

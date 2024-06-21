@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<div>
+    <h3>Buscar por Guid: </h3>
+    <form [formGroup]="parametro" (ngSubmit)="ConsultaFiltro()">
+      <input type="text" formControlName="filtro">
+      <button type="submit">Buscar</button>
+    </form>
+</div>
+
+<table class="table table-hover">
+    <thead class="table">
+        <tr>
+            <th>Guid</th>
+            <th>Titulo</th>
+            <th>Precio</th>
+            <th>Fecha de publicación</th>
+            <th>Autor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of LibroLista; track $index)
+        {
+            <tr>
+                <td>{{item.libreriaMaterialId}}</td>
+                <td>{{item.titulo}}</td>
+                <td>{{item.precio}}</td>
+                <td>{{item.fechaPublicacion}}</td>
+                <td>{{item.autorLibro}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
