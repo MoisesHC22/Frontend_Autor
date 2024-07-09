@@ -1,12 +1,55 @@
 
 
-<nav>
-      <a routerLink="/Autor" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Autor</a>
-      <a routerLink="/Agregar" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Agregar</a>
-      <a routerLink="/Libro" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Libro </a>
-      <a routerLink="/Agregar_Libro" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Agregar Libro </a>
-</nav>
+<div class="Unir">
+
+  <div class="centrar">
+  <ul id="Menu" class="slidenav">
+    
+    <li>
+      <div class="InfCli">
+         <img src="Logo.png" class="img">
+         <!-- <p>Adminstrador</p> -->
+      </div>
+
+    </li>
 
 
+    <li>
+      <a>
+        <fa-icon id="Icono" [icon]="faHouse"></fa-icon>
+         <p>Home</p>
+      </a>
+    </li>
 
-<router-outlet />
+    <li>
+      <a routerLink="/Autor" routerLinkActive="active" >
+        <fa-icon id="Icono" [icon]="faUser"></fa-icon>
+        <p>Autor</p> 
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/Libro" routerLinkActive="active"> 
+        <fa-icon id="Icono" [icon]="faBook"></fa-icon>
+        <p>Libro</p>
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/Cupon" routerLinkActive="active"> 
+        <fa-icon id="Icono" [icon]="faTicket"></fa-icon>
+        <p>Cupon</p>
+      </a>
+    </li>
+
+
+  </ul>
+</div>
+
+  <div class="content">
+    <div  class="Paginas">
+      <router-outlet />
+    </div>
+  </div>
+
+</div>

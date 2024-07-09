@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeAutComponent } from './Vistas/Autor/home-aut/home-aut.component';
 import { AgregarAutComponent } from './Vistas/Autor/agregar-aut/agregar-aut.component';
 import { HomeLibComponent } from './Vistas/Libro/home-lib/home-lib.component';
+import { HomeCupComponent } from './Vistas/Cupon/home-cup/home-cup.component';
 import { AgregarLibComponent } from './Vistas/Libro/agregar-lib/agregar-lib.component';
 
 export const routes: Routes = [
@@ -9,5 +10,6 @@ export const routes: Routes = [
     {path: 'Autor', component: HomeAutComponent},
     {path: 'Agregar', component: AgregarAutComponent},
     {path: 'Libro',  component: HomeLibComponent},
+    {path: 'Cupon', component: HomeCupComponent },
     {path: 'Agregar_Libro', component: AgregarLibComponent}
 ];

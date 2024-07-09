@@ -1,21 +1,21 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<script src="https://kit.fontawesome.com/c8249c779f.js" crossorigin="anonymous"></script>
 
-<h3 class="text-center my-4">Lista de Autores de libros</h3>
+<div class="centrar">
 
-<div class="margen"> 
-<div>
-    <h3>Buscar por Guid:</h3>
-    <form [formGroup]="parametro" (ngSubmit)="ConsultaFiltro()">
-        <div class="buscar">
-          <input type="text" formControlName="filtro">
-          <button type="submit">Buscar</button>
-        </div>
-    </form>
-</div>
+  <div class="componente">
+    <h3 class="Titulo">Lista de Autores</h3>
 
-<table class="table table-hover">
-    <thead class="table">
+    <div class="CompBus">
+       <h3>Buscar por Guid:</h3>
+       <form [formGroup]="parametro" (ngSubmit)="ConsultaFiltro()">
+          <div class="buscar">
+            <input type="text" formControlName="filtro">
+            <button type="submit">Buscar</button>
+          </div>
+       </form>
+    </div>
+
+<table class="tabla">
+    <thead>
         <tr>
             <th>Nombre</th>
             <th>Apellido</th>
@@ -35,4 +35,9 @@
         }
     </tbody>
 </table>
+
+<div class="centrar">
+<button id="Nuevo">Nuevo</button>
+</div>
+</div>
 </div>

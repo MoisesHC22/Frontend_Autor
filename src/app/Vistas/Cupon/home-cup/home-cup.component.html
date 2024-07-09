@@ -1,0 +1,20 @@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Porcentaje</th>
+            <th>Minimo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of CuponList; track $index) 
+        {
+            <tr>
+                <td>{{item.cuponCode}}</td>
+                <td>{{item.descuentoMinimo}}</td>
+                <td>{{item.porcetanjeDescuento}}</td>
+            </tr>
+        }
+    </tbody>
+</table>

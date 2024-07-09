@@ -1,38 +1,106 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
-nav {
-    margin: 27px auto 0;
-    position: relative;
-    width: 400px;
-    height: 50px;
-    background-color: #34495e;
-    border-radius: 8px;
-    font-size: 0;
+
+.Unir{
+  display: flex;
+}
+
+#Icono {
+  font-size: 24px;
+}
+
+.InfCli {
+  display: flex;
+
+  .img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.centrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slidenav {
+  background-color: #C70039;
+  width: 50px; 
+  height: 500px;
+  border-radius: 9px;
+  margin: 0px 10px;
+  padding: 0;
+  list-style-type: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s;
+   
+
+  li {
+    
+    width: 100%;
+    padding: 15px 16px;
+    justify-content: center;
+    display: flex;
+
+    a {
+      font-family: "Josefin Sans", sans-serif;
+      color: white;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+
+      p{
+        display: none;
+        margin: 0;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.slidenav:hover{
+  width: 150px;
+   
+  .InfCli {
+    p{
+      display: flex;
+    }
   }
 
-  nav a{
-    line-height: 50px;
-	height: 100%;
-  font-family: "Oswald", sans-serif;
-	font-size: 20px;
-	display: inline-block;
-    position: relative;
-    z-index: 1;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    width: 200px;
+  li {
+    a{
+      p{
+        margin-left: 8px;
+        display: inline;
+      }
+    }
   }
 
+}
 
- nav a:hover, nav a.active {
-    background-color: #1abc9c;
-    border-radius: 8px 0 0 8px;
- }
 
- nav a:nth-child(2):hover, nav a:nth-child(2).active {
-    background-color: #e74c3c;
-    border-radius: 0 8px 8px 0;
- }
+li:hover{
+  a {
+    p{
+      font-size: 14px;
+      color: #F6F6F6;
+    }
+  }
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.Paginas {
+  background-color: white;
+  border-radius: 15px;
+  height: 100%;
+  margin: 0px 30px;
+}

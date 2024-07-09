@@ -1,6 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Console } from 'console';
 import { CommonModule } from '@angular/common';
 
 import { AutorInterface } from '../../../Interfaces/autor.interface';

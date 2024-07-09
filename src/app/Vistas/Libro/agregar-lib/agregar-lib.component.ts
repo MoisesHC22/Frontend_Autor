@@ -47,8 +47,6 @@ export class AgregarLibComponent implements OnInit{
 
 
   agregar(): void{
-    console.log(this.Libro.value);
-
     const data: LibroInterface ={
       titulo: this.Libro.value.titulo!,
       fechaPublicacion: new Date( this.Libro.value.fechaPublicacion!).toISOString(),
@@ -57,7 +55,7 @@ export class AgregarLibComponent implements OnInit{
     };
      
     this.funciones.crearLibro(data).subscribe(() => {
-      console.log("success");
+      console.log("success");  
       this.rutas.navigateByUrl('/HomeLib');
     })
   }
