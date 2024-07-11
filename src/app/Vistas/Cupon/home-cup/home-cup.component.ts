@@ -17,9 +17,29 @@ constructor(private Funciones: FuncionesService, private form: FormBuilder ){};
 
 CuponList: CuponInterface[]=[];
 
+parametro = this.form.group({
+  filtro: ['']
+})
+
 ngOnInit(): void {
   this.RegistrosCupon();
 }
+
+ConsultaFiltro(): void{
+   const filtro = this.parametro.value.filtro;
+
+   if(filtro){
+    this.Funciones.GetByCode(filtro).subscribe({
+      next: (result: CuponInterface[]) => {
+        this.CuponList = result;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+   }
+}
+
 
 RegistrosCupon(): void{
   this.Funciones.GetCupones().subscribe({
@@ -32,4 +52,6 @@ RegistrosCupon(): void{
     }
   })
 }
+
+
 }

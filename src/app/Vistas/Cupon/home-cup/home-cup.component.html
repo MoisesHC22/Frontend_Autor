@@ -1,6 +1,18 @@
 
-<table class="table">
-    <thead>
+<h3>Bienvenido a cupon</h3>
+
+<div>
+    <h3>Buscar por nombre: </h3>
+    <form [formGroup]="parametro" (ngSubmit)="ConsultaFiltro()">
+        <div class="buscar">
+            <input type="text" formControlName="filtro">
+            <button type="submit">Buscar</button>
+          </div>
+    </form>
+</div>
+
+<table class="table table-hover">
+    <thead class="table">
         <tr>
             <th>Código</th>
             <th>Porcentaje</th>
@@ -12,8 +24,8 @@
         {
             <tr>
                 <td>{{item.cuponCode}}</td>
-                <td>{{item.descuentoMinimo}}</td>
-                <td>{{item.porcetanjeDescuento}}</td>
+                <td>{{item.descuentoMinimo}}%</td>
+                <td>{{item.porcetanjeDescuento}}%</td>
             </tr>
         }
     </tbody>

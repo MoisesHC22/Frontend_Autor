@@ -19,12 +19,23 @@
 }
 
 .tabla {
+ 
+    width: 100%;
+    border-collapse: collapse;
+
     th{
-        background-color: #FF5733;
-        border-radius: 10px;
+        text-align: center;
+        font-family: "Kanit", sans-serif;
+        background-color: black;
         color: white;
-        padding: 10px;
-        
+        font-size: 14px;
+    }
+
+    th, td{
+        font-family: "Kanit", sans-serif;
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
     }
 }
 

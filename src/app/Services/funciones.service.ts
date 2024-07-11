@@ -61,9 +61,11 @@ export class FuncionesService {
      return this.httpClient.get(this.API_Cupon + '/Cupones/GetCupon?id='+ CuponId);
    }
 
-   GetByCode(Code: string): Observable<any>{
-      return this.httpClient.get(this.API_Cupon + '/Cupones/getbycode?code=' +  Code);
-   }
+   GetByCode(code: string): Observable<CuponInterface[]> {
+      return this.httpClient.get<{ result: CuponInterface }>(`${this.API_Cupon}/Cupones/getbycode?code=${code}`).pipe(
+        map(response => response.result ? [response.result] : [])
+      );
+    }
  
    CrearCupon(data: CuponInterface){
       return this.httpClient.post(this.API_Cupon + '/Cupones/Crear', data);

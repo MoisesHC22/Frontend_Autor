@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { AutorInterface } from '../../../Interfaces/autor.interface';
 import { FuncionesService } from '../../../Services/funciones.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-aut',
@@ -14,7 +15,7 @@ import { FuncionesService } from '../../../Services/funciones.service';
 })
 export class HomeAutComponent implements OnInit {
 
-  constructor(private Funciones: FuncionesService, private form: FormBuilder){}
+  constructor(private Funciones: FuncionesService, private form: FormBuilder, private rutas: Router){}
 
   parametro = this.form.group({
     filtro: ['']
@@ -54,4 +55,11 @@ export class HomeAutComponent implements OnInit {
       }
     })
   }
+
+  abrirModal(): void {
+    this.rutas.navigateByUrl('/Agregar_Autor')
+  }
+
 }
+
+
