@@ -4,19 +4,25 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { FuncionesService } from '../../../Services/funciones.service';
 
 import { LibroInterface } from '../../../Interfaces/libro.interface';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { AgregarLibComponent } from '../agregar-lib/agregar-lib.component';
 
 @Component({
   selector: 'app-home-lib',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CommonModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule, FontAwesomeModule, AgregarLibComponent],
   templateUrl: './home-lib.component.html',
   styleUrl: './home-lib.component.css'
 })
 export class HomeLibComponent implements OnInit {
 
+  faMagnifyingGlass = faMagnifyingGlass;
+
   constructor(private Funciones: FuncionesService, private form: FormBuilder){}
    
- 
+  LibroLista: LibroInterface[]=[];
+
   ngOnInit(): void {
     this.GetLibros();
   }
@@ -24,10 +30,6 @@ export class HomeLibComponent implements OnInit {
   parametro = this.form.group({
     filtro: ['']
   })
-  
-  LibroLista: LibroInterface[]=[];
-
-
 
   ConsultaFiltro(): void{
     const filtro = this.parametro.value.filtro;
@@ -56,5 +58,14 @@ export class HomeLibComponent implements OnInit {
       }
     });
   }
+  
+  showModal = false;
 
+  AbrirModal() {
+    this.showModal = true;
+  }
+
+  CerrarModal() {
+    this.showModal = false;
+  }
 }

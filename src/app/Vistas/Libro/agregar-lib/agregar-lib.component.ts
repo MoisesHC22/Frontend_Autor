@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FuncionesService } from '../../../Services/funciones.service';
-import { publicDecrypt } from 'crypto';
 import { LibroInterface } from '../../../Interfaces/libro.interface';
 import { AutorInterface } from '../../../Interfaces/autor.interface';
 
@@ -19,6 +18,12 @@ export class AgregarLibComponent implements OnInit{
    
   constructor(private rutas: Router, private form: FormBuilder, private funciones: FuncionesService){}
   
+  ngOnInit(): void {
+    this.GuidAutores();
+  }
+
+  @Output() cerrarModal = new EventEmitter<void>();
+
   Libro = this.form.group({
       titulo: ['', [Validators.required]],
       fechaPublicacion: [ , [Validators.required]],
@@ -26,13 +31,8 @@ export class AgregarLibComponent implements OnInit{
       autorLibro: ['', [Validators.required]]
   });
 
-
  //Mostrar en una lista los autores para relacionar 
   AutorList: AutorInterface[]=[];
-
-  ngOnInit(): void {
-    this.GuidAutores();
-  }
 
   GuidAutores(){
     this.funciones.GetAutor().subscribe({
@@ -58,6 +58,10 @@ export class AgregarLibComponent implements OnInit{
       console.log("success");  
       this.rutas.navigateByUrl('/HomeLib');
     })
+  }
+
+  close(){
+    this.cerrarModal.emit();
   }
 
 }

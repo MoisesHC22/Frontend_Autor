@@ -4,4 +4,5 @@ export interface AutorInterface{
     apellido?: string;
     fechaNacimiento?: Date;
     autorLibroGuid?: string;
+    imagen?: string;
 }

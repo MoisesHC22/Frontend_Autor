@@ -1,10 +1,10 @@
 
 <div id="Crear" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" (click)="close()">&times;</span>
         <div class="centrar">
         <div class="container">
-            <h3 class="TituloModal">Crear nuevo Autor</h3>
+            <h3 class="TituloModal">Crear nuevo Cupon</h3>
 
             <form [formGroup]="Cupon" (ngSubmit)="agregar()" class=" formulario needs-validation" novalidate>
                

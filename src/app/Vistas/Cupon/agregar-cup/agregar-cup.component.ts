@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { FuncionesService } from '../../../Services/funciones.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -19,6 +19,8 @@ constructor(private Funciones: FuncionesService, private form: FormBuilder, priv
 ngOnInit(): void {
 }
 
+@Output() cerrarModal = new EventEmitter<void>();  
+
 Cupon = this.form.group({
    cuponCode: ['', [Validators.required]],
    porcetanjeDescuento: [0,[Validators.required]],
@@ -33,8 +35,13 @@ agregar(){
   };
 
   this.Funciones.CrearCupon(data).subscribe(() => {
-       this.rutas.navigateByUrl('/HomeCup')
+    console.log("success");
+    this.cerrarModal.emit();
   });
+}
+
+close(){
+  this.cerrarModal.emit();
 }
 
 }

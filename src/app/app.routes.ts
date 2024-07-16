@@ -12,7 +12,7 @@ export const routes: Routes = [
     {path: 'Agregar', component: AgregarAutComponent},
     {path: 'Libro',  component: HomeLibComponent},
     {path: 'Cupon', component: HomeCupComponent },
-    {path: 'Agregar_Libro', component: AgregarLibComponent},
     {path: 'Agregar_Autor', component: AgregarAutComponent},
+    {path: 'Agregar_Libro', component: AgregarLibComponent},
     {path: 'Agregar_Cupon', component: AgregarCupComponent}
 ];

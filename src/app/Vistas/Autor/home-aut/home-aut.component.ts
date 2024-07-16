@@ -1,33 +1,35 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
 import { AutorInterface } from '../../../Interfaces/autor.interface';
 import { FuncionesService } from '../../../Services/funciones.service';
-import { Router } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { AgregarAutComponent } from "../agregar-aut/agregar-aut.component";
 
 @Component({
   selector: 'app-home-aut',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, FontAwesomeModule, AgregarAutComponent],
   templateUrl: './home-aut.component.html',
   styleUrl: './home-aut.component.css'
 })
+
 export class HomeAutComponent implements OnInit {
 
-  constructor(private Funciones: FuncionesService, private form: FormBuilder, private rutas: Router){}
+  faMagnifyingGlass = faMagnifyingGlass;
+
+  constructor(private Funciones: FuncionesService, private form: FormBuilder){}
+
+  AutorList: AutorInterface[]=[];
+
+  ngOnInit(): void {
+    this.GetAutor();
+  }
 
   parametro = this.form.group({
     filtro: ['']
   })
-
-  AutorList: AutorInterface[]=[];
-
-
-  
-  ngOnInit(): void {
-    this.GetAutor();
-  }
 
   ConsultaFiltro(): void{
       const filtro = this.parametro.value.filtro;
@@ -55,11 +57,16 @@ export class HomeAutComponent implements OnInit {
       }
     })
   }
+  
+  showModal = false;
 
-  abrirModal(): void {
-    this.rutas.navigateByUrl('/Agregar_Autor')
+  AbrirModal() {
+    this.showModal = true;
   }
 
+  CerrarModal() {
+    this.showModal = false;
+  }
 }
 
 

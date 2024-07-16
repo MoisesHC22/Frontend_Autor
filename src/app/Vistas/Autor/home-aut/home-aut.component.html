@@ -4,29 +4,38 @@
   <div class="componente">
     <h3 class="Titulo">Lista de Autores</h3>
 
-    <div class="CompBus">
-       <h3>Buscar por Guid:</h3>
-       <form [formGroup]="parametro" (ngSubmit)="ConsultaFiltro()">
-          <div class="buscar">
-            <input type="text" formControlName="filtro">
-            <button type="submit">Buscar</button>
-          </div>
-       </form>
+    <div class="centrar">
+      <div class="CompBus">
+          <h3 class="TituloBus">Buscar por Guid:</h3>
+           
+          <form [formGroup]="parametro" (ngSubmit)="ConsultaFiltro()">
+             <div class="buscar">
+                <input type="text" class="contBuscar" formControlName="filtro">
+                <button class="btnBuscar" type="submit"><fa-icon id="Icono" [icon]="faMagnifyingGlass"></fa-icon></button>
+             </div>
+          </form>
+
+          <button id="Nuevo" (click)="AbrirModal()">Nuevo</button>
+
+       </div>
     </div>
 
-<table class="tabla">
-    <thead>
+<table class="table tabla-hover">
+    <thead class="table">
         <tr>
-            <th>Nombre</th>
+            <th></th>
+            <th >Nombre</th>
             <th>Apellido</th>
             <th>Fecha de nacimiento</th>
             <th>Guid</th>
+            
         </tr>
     </thead>
     <tbody>
         @for (item of AutorList; track $index) 
         {
             <tr>
+                <td><img id="img" [src]="'data:imagen/png;base64,' + item.imagen" alt="Imagen del autor"></td>
                 <td>{{item.nombre}}</td>
                 <td>{{item.apellido}}</td>
                 <td>{{item.fechaNacimiento}}</td>
@@ -35,9 +44,7 @@
         }
     </tbody>
 </table>
+</div>
+</div>
 
-<div class="centrar">
-<button id="Nuevo">Nuevo</button>
-</div>
-</div>
-</div>
+<app-agregar-aut *ngIf="showModal" (cerrarModal)="CerrarModal()"></app-agregar-aut>

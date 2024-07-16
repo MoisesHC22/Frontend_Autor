@@ -1,7 +1,7 @@
 
 <div id="Crear" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" (click)="close()" >&times;</span>
         <div class="centrar">
         <div class="container">
             <h3 class="TituloModal">Crear nuevo Autor</h3>
@@ -20,6 +20,11 @@
                 <div class="form-group requerimiento">
                     <label class="descripcion " for="fechaNacimiento">Fecha de nacimiento:</label>
                     <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento" required>
+                </div>
+
+                <div class="form-group requerimiento">
+                     <label>Ingresar imagen: </label>
+                     <input type="file" (change)="CargarImagen($event)"> 
                 </div>
         
                 <div class="requerimiento">

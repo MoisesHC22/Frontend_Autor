@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CuponInterface } from '../../../Interfaces/cupon.interface';
 import { FuncionesService } from '../../../Services/funciones.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { AgregarCupComponent } from "../agregar-cup/agregar-cup.component";
 
 @Component({
   selector: 'app-home-cup',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, FontAwesomeModule, AgregarCupComponent],
   templateUrl: './home-cup.component.html',
   styleUrl: './home-cup.component.css'
 })
 export class HomeCupComponent implements OnInit {
+
+faMagnifyingGlass = faMagnifyingGlass;
 
 constructor(private Funciones: FuncionesService, private form: FormBuilder ){};
 
@@ -53,5 +58,14 @@ RegistrosCupon(): void{
   })
 }
 
+showModal = false;
+
+AbrirModal() {
+  this.showModal = true;
+}
+
+CerrarModal() {
+  this.showModal = false;
+}
 
 }
