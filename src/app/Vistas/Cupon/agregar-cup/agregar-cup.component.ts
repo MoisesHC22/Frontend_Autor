@@ -24,14 +24,18 @@ ngOnInit(): void {
 Cupon = this.form.group({
    cuponCode: ['', [Validators.required]],
    porcetanjeDescuento: [0,[Validators.required]],
-   descuentoMinimo: [0.0,[Validators.required]]
+   descuentoMinimo: [0.0,[Validators.required]],
+   fechaInicio: [  , [Validators.required]],
+   fechaExpiracion: [ , [Validators.required]]
 });
 
 agregar(){
   const data: CuponInterface = {
     cuponCode: this.Cupon.value.cuponCode!,
     porcetanjeDescuento: this.Cupon.value.porcetanjeDescuento!,
-    descuentoMinimo: this.Cupon.value.descuentoMinimo!
+    descuentoMinimo: this.Cupon.value.descuentoMinimo!,
+    fechaInicio: this.Cupon.value.fechaInicio!,
+    fechaExpiracion: this.Cupon.value.fechaExpiracion!
   };
 
   this.Funciones.CrearCupon(data).subscribe(() => {

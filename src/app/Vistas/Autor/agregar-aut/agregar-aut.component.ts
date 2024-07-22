@@ -4,7 +4,6 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { AutorInterface } from '../../../Interfaces/autor.interface';
 import { FuncionesService } from '../../../Services/funciones.service';
 import { Router } from '@angular/router';
-import { read } from 'node:fs';
 
 @Component({
   selector: 'app-agregar-aut',
@@ -21,7 +20,9 @@ export class AgregarAutComponent implements OnInit {
    ngOnInit(): void {
    }
 
-  @Output() cerrarModal = new EventEmitter<void>();  
+  @Output() cerrarModal = new EventEmitter<void>();
+  imagenURL: string | ArrayBuffer | null = null;
+  imagenSeleccionada = false;
 
   Autor = this.form.group({
     nombre : ['', [Validators.required]],
@@ -53,19 +54,28 @@ export class AgregarAutComponent implements OnInit {
       const render = new FileReader();
 
       render.onload = () => {
-        let base64string = render.result as string;
+        this.imagenURL = render.result;
 
-      const base64Index = base64string.indexOf('base64') + 7;
-      base64string = base64string.substring(base64Index); 
-
-        this.Autor.patchValue({
-          imagen: base64string
-        });
-      };
-      render.readAsDataURL(file);
+        const base64string = render.result as string;
+        const base64Index = base64string.indexOf('base64') + 7;
+        const base64Data = base64string.substring(base64Index); 
+  
+          this.Autor.patchValue({
+            imagen: base64Data
+          });
+  
+          this.imagenSeleccionada = true;
+        };
+        render.readAsDataURL(file);
+      }
+  
     }
-
-  }
+  
+  
+    clickFileInput() {
+      const fileInput = document.getElementById('imagenLibro') as HTMLInputElement;
+      fileInput.click();
+    }
 
   close(){
     this.cerrarModal.emit();

@@ -103,3 +103,11 @@ li:hover{
   height: 95vh;
   margin: 10px;
 }
+
+
+.icono-activo {
+  border: 2px solid black;
+  background-color: black;
+  border-radius: 4px;
+  padding: 4px;
+}

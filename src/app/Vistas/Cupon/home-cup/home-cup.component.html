@@ -1,8 +1,8 @@
 
-<div class="centrar">
+<div class="centrar" *ngIf="!showAnimation; else errorTemplate">
 
   <div class="componente"> 
-    <h3 class="Titulo">Lista de cupon</h3>
+    <h3 class="Titulo">Cupones</h3>
 
     <div class="centrar">
         <div class="CompBus">
@@ -24,6 +24,8 @@
             <th>Código</th>
             <th>Porcentaje</th>
             <th>Minimo</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha de Expiracion</th>
         </tr>
     </thead>
     <tbody>
@@ -33,6 +35,8 @@
                 <td>{{item.cuponCode}}</td>
                 <td>{{item.descuentoMinimo}}%</td>
                 <td>{{item.porcetanjeDescuento}}%</td>
+                <td>{{item.fechaInicio}}</td>
+                <td>{{item.fechaExpiracion}}</td>
             </tr>
         }
     </tbody>
@@ -40,6 +44,17 @@
 
   </div>
 </div>
+
+  <ng-template #errorTemplate>
+    <div class="ContenedorAnim">
+        
+        <div class="Animacion">
+          <ng-lottie [options]="animationOptions"></ng-lottie>
+        </div>
+
+        <h3 class="Alerta">Cupones no disponibles!</h3>
+    </div>
+  </ng-template>
 
 
 <app-agregar-cup *ngIf="showModal" (cerrarModal)="CerrarModal()"></app-agregar-cup>

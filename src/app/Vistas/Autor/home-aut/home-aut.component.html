@@ -1,8 +1,8 @@
 
-<div class="centrar">
+<div class="centrar" *ngIf="!showAnimation; else errorTemplate">
 
   <div class="componente">
-    <h3 class="Titulo">Lista de Autores</h3>
+    <h3 class="Titulo">Autores</h3>
 
     <div class="centrar">
       <div class="CompBus">
@@ -44,7 +44,21 @@
         }
     </tbody>
 </table>
+
+
 </div>
 </div>
+
+<ng-template #errorTemplate>
+    <div class="ContenedorAnim">
+        
+        <div class="Animacion">
+          <ng-lottie [options]="animationOptions"></ng-lottie>
+        </div>
+
+        <h3 class="Alerta">Autores no disponibles!</h3>
+    </div>
+  </ng-template>
+
 
 <app-agregar-aut *ngIf="showModal" (cerrarModal)="CerrarModal()"></app-agregar-aut>

@@ -6,26 +6,31 @@ import { FuncionesService } from '../../../Services/funciones.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { AgregarAutComponent } from "../agregar-aut/agregar-aut.component";
+import { LottieComponent, AnimationOptions} from "ngx-lottie"
 
 @Component({
   selector: 'app-home-aut',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, FontAwesomeModule, AgregarAutComponent],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, FontAwesomeModule, AgregarAutComponent, LottieComponent],
   templateUrl: './home-aut.component.html',
   styleUrl: './home-aut.component.css'
 })
 
 export class HomeAutComponent implements OnInit {
 
-  faMagnifyingGlass = faMagnifyingGlass;
-
   constructor(private Funciones: FuncionesService, private form: FormBuilder){}
-
-  AutorList: AutorInterface[]=[];
 
   ngOnInit(): void {
     this.GetAutor();
   }
+
+  AutorList: AutorInterface[]=[];
+  faMagnifyingGlass = faMagnifyingGlass;
+  showModal = false;
+  showAnimation = false;
+  animationOptions: AnimationOptions = { 
+    path: '/Animaciones/ErrorCarga.json' 
+  };
 
   parametro = this.form.group({
     filtro: ['']
@@ -38,9 +43,10 @@ export class HomeAutComponent implements OnInit {
         this.Funciones.GetAutorLibro(filtro).subscribe({
           next: (result) => {
             this.AutorList = [result];
+            this.showAnimation = false;
           },
           error: (err) => {
-            console.log(err);
+            this.showAnimation = true;
           }
         })
       }
@@ -50,22 +56,22 @@ export class HomeAutComponent implements OnInit {
   GetAutor(): void{
     this.Funciones.GetAutor().subscribe({
       next: (result) => {
+        this.showAnimation = false;
         this.AutorList = result;
       },
       error: (err) => {
-        console.log(err);
+        this.showAnimation = true;
       }
     })
   }
   
-  showModal = false;
-
   AbrirModal() {
     this.showModal = true;
   }
 
   CerrarModal() {
     this.showModal = false;
+    this.GetAutor();
   }
 }
 

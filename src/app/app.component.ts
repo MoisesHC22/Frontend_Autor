@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterModule } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterModule, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { faUser, faHouse, faBook, faTicket } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faHouse, faBook, faTicket, faWallet, faShop } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
@@ -19,8 +19,24 @@ export class AppComponent {
   faUser = faUser;
   faBook = faBook;
   faTicket = faTicket;
+  faWallet = faWallet;
+  faShop = faShop;
 
   title= "Hola";
   
+  currentRoute: string = '';
+
+  constructor(private router: Router){
+    this.router.events.subscribe(event => {
+      if(event instanceof NavigationEnd) {
+        this.currentRoute = event.urlAfterRedirects;
+      }
+    });
+  }
+
+
+  isActive(route: string): boolean {
+    return this.currentRoute === route;
+  }
 
 }

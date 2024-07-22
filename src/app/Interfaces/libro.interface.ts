@@ -4,4 +4,6 @@ export interface LibroInterface{
     fechaPublicacion?: string;
     precio?: number;
     autorLibro?: string;
+    iva?: number;
+    imagen?: string;
 }

@@ -3,4 +3,6 @@ export interface CuponInterface {
     cuponCode?: string;
     porcetanjeDescuento?: number;
     descuentoMinimo?: number;
+    fechaInicio?: Date;
+    fechaExpiracion?: Date;
 }

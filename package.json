@@ -27,6 +27,8 @@
     "express": "^4.18.2",
     "google-protobuf": "^3.21.2",
     "grpc-web": "^1.5.0",
+    "lottie-web": "^5.12.2",
+    "ngx-lottie": "^12.0.0",
     "protobufjs": "^7.3.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

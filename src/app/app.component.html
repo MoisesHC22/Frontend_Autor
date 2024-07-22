@@ -13,32 +13,46 @@
 
     <li>
       <a>
-        <fa-icon id="Icono" [icon]="faHouse"></fa-icon>
+        <fa-icon id="Icono" [icon]="faHouse" [ngClass]="{'icono-activo': isActive('/Home')}"></fa-icon>
          <p>Home</p>
       </a>
     </li>
 
     <li>
       <a routerLink="/Autor" routerLinkActive="active" >
-        <fa-icon id="Icono" [icon]="faUser"></fa-icon>
+        <fa-icon id="Icono" [icon]="faUser" [ngClass]="{'icono-activo': isActive('/Autor')}"></fa-icon>
         <p>Autor</p> 
       </a>
     </li>
 
     <li>
       <a routerLink="/Libro" routerLinkActive="active"> 
-        <fa-icon id="Icono" [icon]="faBook"></fa-icon>
+        <fa-icon id="Icono" [icon]="faBook" [ngClass]="{'icono-activo': isActive('/Libro')}"></fa-icon>
         <p>Libro</p>
       </a>
     </li>
 
     <li>
       <a routerLink="/Cupon" routerLinkActive="active"> 
-        <fa-icon id="Icono" [icon]="faTicket"></fa-icon>
+        <fa-icon id="Icono" [icon]="faTicket" [ngClass]="{'icono-activo': isActive('/Cupon')}"></fa-icon>
         <p>Cupon</p>
       </a>
     </li>
     
+    <li>
+      <a routerLink="/Ventas" routerLinkActive="active"> 
+        <fa-icon id="Icono" [icon]="faWallet" [ngClass]="{'icono-activo': isActive('/Ventas')}"></fa-icon>
+        <p>Ventas</p>
+      </a>
+    </li>
+
+
+    <li>
+      <a routerLink="/Tienda" routerLinkActive="active"> 
+        <fa-icon id="Icono" [icon]="faShop" [ngClass]="{'icono-activo': isActive('/Tienda')}"></fa-icon>
+        <p>Regresar</p>
+      </a>
+    </li>
   </ul>
 </div>
 

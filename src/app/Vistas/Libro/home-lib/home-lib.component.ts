@@ -7,25 +7,30 @@ import { LibroInterface } from '../../../Interfaces/libro.interface';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { AgregarLibComponent } from '../agregar-lib/agregar-lib.component';
+import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-home-lib',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CommonModule, FontAwesomeModule, AgregarLibComponent],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule, FontAwesomeModule, AgregarLibComponent, LottieComponent],
   templateUrl: './home-lib.component.html',
   styleUrl: './home-lib.component.css'
 })
 export class HomeLibComponent implements OnInit {
 
-  faMagnifyingGlass = faMagnifyingGlass;
-
   constructor(private Funciones: FuncionesService, private form: FormBuilder){}
    
-  LibroLista: LibroInterface[]=[];
-
   ngOnInit(): void {
     this.GetLibros();
   }
+
+  LibroLista: LibroInterface[]=[];
+  faMagnifyingGlass = faMagnifyingGlass;
+  showModal = false;
+  showAnimation = false;
+  animationOptions: AnimationOptions = { 
+    path: '/Animaciones/ErrorCarga.json' 
+  };
 
   parametro = this.form.group({
     filtro: ['']
@@ -39,9 +44,10 @@ export class HomeLibComponent implements OnInit {
         next: (result) => {
           console.log(result);
           this.LibroLista = [result];
+          this.showAnimation = false;
         },
         error: (err) => {
-          console.log(err);
+          this.showAnimation = true;
         }
       })
     }
@@ -52,14 +58,15 @@ export class HomeLibComponent implements OnInit {
       next: (result) => {
         console.log(result);
         this.LibroLista = result;
+        this.showAnimation = false;
       },
       error: (err) => {
         console.log(err);
+        this.showAnimation = true;
       }
     });
   }
-  
-  showModal = false;
+
 
   AbrirModal() {
     this.showModal = true;
@@ -67,5 +74,6 @@ export class HomeLibComponent implements OnInit {
 
   CerrarModal() {
     this.showModal = false;
+    this.GetLibros();
   }
 }

@@ -12,11 +12,11 @@ import { response } from 'express';
 })
 export class FuncionesService {
 
-  API_Autor: string = 'https://localhost:7197';
-  API_Libro: string = 'https://localhost:7262';
-  API_Cupon: string = 'https://localhost:7178';
+  private API_Autor: string = 'https://localhost:7197';
+  private API_Libro: string = 'https://localhost:7262';
+  private API_Cupon: string = 'https://localhost:7178';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient ) { }
 
 
   // Funciones para Autor
@@ -36,6 +36,7 @@ export class FuncionesService {
 
 
    // Funciones para Libro
+
    crearLibro(data: LibroInterface){
       return this.httpClient.post(this.API_Libro + '/Libro/Crear', data);
    }
@@ -53,6 +54,7 @@ export class FuncionesService {
 
 
    // Funciones para Cupon
+   
    GetCupones(): Observable<CuponInterface[]>{
       return this.httpClient.get<{ result: CuponInterface[] }>(this.API_Cupon + '/Cupones/GetCupones').pipe(map(response => response.result));
    }
