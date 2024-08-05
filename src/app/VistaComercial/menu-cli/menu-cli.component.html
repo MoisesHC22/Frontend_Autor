@@ -1,0 +1,28 @@
+
+<nav class="Menu">
+  <ul>
+    <li>
+      <form [formGroup]="parametro">
+         <input type="text" class="contBuscar" placeholder="Buscar" formControlName="filtro" >
+      </form>
+    </li>
+    <li>
+      <a id="Opcion" routerLink="/Home">HOME</a>
+    </li>
+    <li>
+      <a  id="Opcion" routerLink="/Productos">PRODUCTOS</a>
+    </li>
+    <li>
+      <a routerLink="/Carrito">
+        <fa-icon id="Icono" [icon]="faShop"></fa-icon>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/admin/Autor">
+          <fa-icon id="Icono" [icon]="faUser"></fa-icon>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <router-outlet></router-outlet>

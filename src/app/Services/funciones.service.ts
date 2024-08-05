@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { AutorInterface } from '../Interfaces/autor.interface';
 import { LibroInterface } from '../Interfaces/libro.interface';
 import { CuponInterface } from '../Interfaces/cupon.interface';
 import { response } from 'express';
+import { CarritoInterface } from '../Interfaces/Carrito.interface';
 
 
 @Injectable({
@@ -15,8 +16,17 @@ export class FuncionesService {
   private API_Autor: string = 'https://localhost:7197';
   private API_Libro: string = 'https://localhost:7262';
   private API_Cupon: string = 'https://localhost:7178';
+  private API_Carrito: string = 'https://localhost:7283';
+
+  private datoFiltro = new BehaviorSubject<string>('');
+  filtro$ = this.datoFiltro.asObservable();
 
   constructor(private httpClient: HttpClient ) { }
+
+  //FiltroMenu
+  Busqueda(filtro: string): void {
+   this.datoFiltro.next(filtro);
+  }
 
 
   // Funciones para Autor
@@ -49,6 +59,10 @@ export class FuncionesService {
       return this.httpClient.get(this.API_Libro + "/Libro/GetLibro?id=" + LibreriaMaterialId);
    }
 
+   Buscar(dato: string): Observable<any>{
+      return this.httpClient.get(this.API_Libro + "/Libro/Buscar?dato=" + dato);
+   }
+
    
 
 
@@ -76,6 +90,20 @@ export class FuncionesService {
    ActualizarCupon(data: CuponInterface){
       return this.httpClient.put(this.API_Cupon + '/Cupones/Actualizar', data);
    }
+
+
+   // Funciones para Carrito
+   CrearCarrito(productos: { ProductoID: string, cantidad: number}[]): Observable<any> {
+   return this.httpClient.post(this.API_Carrito + '/Carrito/Nuevo', {
+     ProductoLista: productos
+   });
+  }
+  
+  ObtenerCarrito(carritoId: number): Observable<CarritoInterface>
+  {
+   return this.httpClient.get<CarritoInterface>(this.API_Carrito + '/Carrito/Consulta?CarritoSessionId=' + carritoId)
+  }
+
 
 
 }

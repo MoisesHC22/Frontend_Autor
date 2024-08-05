@@ -1,0 +1,65 @@
+
+<div class="Unir">
+
+    <div class="centrar">
+    <ul id="Menu" class="slidenav">
+      
+      <li>
+        <div class="InfCli">
+           <img src="Logo.png" class="img">
+           <!-- <p>Adminstrador</p> -->
+        </div>
+      </li>
+  
+      <li>
+        <a>
+          <fa-icon id="Icono" [icon]="faHouse" [ngClass]="{'icono-activo': isActive('/Home')}"></fa-icon>
+           <p>Home</p>
+        </a>
+      </li>
+  
+      <li>
+        <a routerLink="/admin/Autor" routerLinkActive="active" >
+          <fa-icon id="Icono" [icon]="faUser" [ngClass]="{'icono-activo': isActive('/admin/Autor')}"></fa-icon>
+          <p>Autor</p> 
+        </a>
+      </li>
+  
+      <li>
+        <a routerLink="/admin/Libro" routerLinkActive="active"> 
+          <fa-icon id="Icono" [icon]="faBook" [ngClass]="{'icono-activo': isActive('/admin/Libro')}"></fa-icon>
+          <p>Libro</p>
+        </a>
+      </li>
+  
+      <li>
+        <a routerLink="/admin/Cupon" routerLinkActive="active"> 
+          <fa-icon id="Icono" [icon]="faTicket" [ngClass]="{'icono-activo': isActive('/admin/Cupon')}"></fa-icon>
+          <p>Cupon</p>
+        </a>
+      </li>
+      
+      <li>
+        <a routerLink="/admin/Ventas" routerLinkActive="active"> 
+          <fa-icon id="Icono" [icon]="faWallet" [ngClass]="{'icono-activo': isActive('/admin/Ventas')}"></fa-icon>
+          <p>Ventas</p>
+        </a>
+      </li>
+  
+  
+      <li>
+        <a routerLink="/Home" routerLinkActive="active"> 
+          <fa-icon id="Icono" [icon]="faShop" [ngClass]="{'icono-activo': isActive('/Home')}"></fa-icon>
+          <p>Regresar</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+    <div class="content">
+      <div  class="Paginas">
+        <router-outlet />
+      </div>
+    </div>
+  
+  </div>

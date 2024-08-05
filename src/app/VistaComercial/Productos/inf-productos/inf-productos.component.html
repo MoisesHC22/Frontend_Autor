@@ -1,0 +1,17 @@
+<div>
+    @for (item of Libro; track $index)
+    {
+        <div>
+            <img id="img" [src]="'data:imagen/png;base64,' + item.imagen" alt="Imagen del autor">
+               
+            <div class="Informacion">
+                <h3 class="TituloLibro">{{item.titulo}}</h3>
+                <p class="PrecioLibro">$ {{item.precio}}</p>
+                <p>{{item.fechaPublicacion}}</p>
+                <p>{{item.iva}}</p>
+            </div>
+
+            <button>Agregar al carrito</button>
+        </div>
+    }
+</div>
