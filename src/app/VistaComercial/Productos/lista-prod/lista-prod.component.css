@@ -15,9 +15,13 @@
 
         .Producto{
             margin: 14px;
+            position: relative;
         }
 
         .Informacion{
+
+            width: 210px;
+
             .TituloLibro{
                 font-family: "Kanit", sans-serif;
             }
@@ -25,20 +29,84 @@
             .PrecioLibro{
                 margin-top: -6px;
             }
+
+            .ContPrecio{
+                display: flex;
+                font-family: "Kanit", sans-serif;
+
+                #Icono{
+                    margin: -9px 10px;
+                    color: red;
+                    font-size: 25px;
+                }
+            }
         }
-        .AgregarProducto{
-            width: 100px;
-            height: 20px;
+
+
+        .contenedorBtn{
+            position: absolute;
+            top: 241px;
+            right: -1px;
+            width: 60px;
+            height: 60px;
+            background-color: #F2F4F4;
+            border-top-left-radius: 50%;
+            
+            &::before{
+                position: absolute;
+                content: "";
+                bottom: -0.001rem;
+                left: -1.26rem;
+                background: transparent;
+                width: 1.25rem;
+                height: 1.25rem;
+                border-bottom-right-radius: 1.25rem;
+                box-shadow: 0.313rem 0.313rem 0 0.313rem #F2F4F4;
+            }
+
+            &::after {
+                position: absolute;
+                content: "";
+                top: -1.25rem;
+                right: -0.00rem;
+                background: transparent;
+                width: 1.25rem;
+                height: 1.25rem;
+                border-bottom-right-radius: 1.25rem;
+                box-shadow: 0.313rem 0.313rem 0 0.313rem #F2F4F4;
+              }
+
+
+            .AgregarProducto{
+               width: 50px;
+               height: 50px;
+               position: absolute;
+               inset: 0.625rem;
+               border-radius: 50%;
+               border: none;
+               background-color: #FFC300;
+               color: #fff;
+               font-size: 20px;
+            }
+
+            .AgregarProducto:hover{
+                background-color: black;
+                width: 52px;
+                height: 52px;
+                transition: 0.3s;
+            }
         }
     }
 
 }
 
 #img {
-    width: 200px;
+    width: 210px;
     height: 300px;
     border-radius: 8px;
 }
+
+
 
 
 

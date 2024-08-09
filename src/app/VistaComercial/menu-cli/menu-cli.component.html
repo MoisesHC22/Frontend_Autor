@@ -3,7 +3,7 @@
   <ul>
     <li>
       <form [formGroup]="parametro">
-         <input type="text" class="contBuscar" placeholder="Buscar" formControlName="filtro" >
+         <input type="text" class="contBuscar" placeholder="Buscar" formControlName="filtro"  >
       </form>
     </li>
     <li>
@@ -13,7 +13,7 @@
       <a  id="Opcion" routerLink="/Productos">PRODUCTOS</a>
     </li>
     <li>
-      <a routerLink="/Carrito">
+      <a (click)="AbrirCarrito()">
         <fa-icon id="Icono" [icon]="faShop"></fa-icon>
       </a>
     </li>
@@ -26,3 +26,6 @@
 </nav>
 
   <router-outlet></router-outlet>
+
+  
+<app-carrito-de-compra *ngIf="showCarrito" (cerrarCarrito)="CerrarCarrito()"></app-carrito-de-compra>

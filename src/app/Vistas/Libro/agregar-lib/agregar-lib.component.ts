@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { FuncionesService } from '../../../Services/funciones.service';
 import { LibroInterface } from '../../../Interfaces/libro.interface';
 import { AutorInterface } from '../../../Interfaces/autor.interface';
-import { read } from 'node:fs';
+import { CategoriaInterface } from '../../../Interfaces/categoria.interface';
+import { CuponInterface } from '../../../Interfaces/cupon.interface';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class AgregarLibComponent implements OnInit{
   
   ngOnInit(): void {
     this.GuidAutores();
+    this.ListaCategoria();
+    this.ListaCupones();
   }
 
   @Output() cerrarModal = new EventEmitter<void>();
@@ -30,18 +33,46 @@ export class AgregarLibComponent implements OnInit{
       fechaPublicacion: [ , [Validators.required]],
       precio: [0.00, [Validators.required]],
       autorLibro: ['', [Validators.required]],
-      imagen: [null as string | null]
+      imagen: [null as string | null],
+      descripcion: ['', [Validators.required]],
+      genero: ['', [Validators.required]],
+      cupon: [0, [Validators.required]]
   });
 
  //Mostrar en una lista los autores para relacionar 
   AutorList: AutorInterface[]=[];
-  imagenURL: string | ArrayBuffer | null = null;
+  CategoriasList: CategoriaInterface[]=[];
+  CuponesList: CuponInterface[]=[];
+
+ imagenURL: string | ArrayBuffer | null = null;
  imagenSeleccionada = false;
 
   GuidAutores(){
     this.funciones.GetAutor().subscribe({
       next: (result) => {
         this.AutorList = result;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
+  ListaCategoria(){
+    this.funciones.GetCategorias().subscribe({
+      next: (result) => {
+        this.CategoriasList = result;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
+  ListaCupones(){
+    this.funciones.GetCupones().subscribe({
+      next: (result) => {
+        this.CuponesList = result;
       },
       error: (err) => {
         console.log(err);
@@ -56,13 +87,21 @@ export class AgregarLibComponent implements OnInit{
       fechaPublicacion: new Date( this.Libro.value.fechaPublicacion!).toISOString(),
       precio: this.Libro.value.precio!,
       autorLibro: this.Libro.value.autorLibro!,
-      imagen: this.Libro.value.imagen!
+      imagen: this.Libro.value.imagen!,
+      descripcion: this.Libro.value.descripcion!,
+      genero: this.Libro.value.genero!,
+      cupon: this.Libro.value.cupon!
     };
      
-    this.funciones.crearLibro(data).subscribe(() => {
-      console.log("success");  
-      this.cerrarModal.emit();
-    })
+    this.funciones.crearLibro(data).subscribe({
+      next: () => {
+        console.log('Libro creado con éxito');
+        this.cerrarModal.emit();
+      },
+      error: (err) => {
+        console.log('Error al crear libro:', err);
+      }
+    });
   }
 
   CargarImagen(event: Event){
@@ -89,7 +128,6 @@ export class AgregarLibComponent implements OnInit{
     }
 
   }
-
 
   clickFileInput() {
     const fileInput = document.getElementById('imagenLibro') as HTMLInputElement;

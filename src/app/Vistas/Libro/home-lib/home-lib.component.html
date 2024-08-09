@@ -42,7 +42,7 @@
                 <td><img id="img" [src]="'data:imagen/png;base64,' + item.imagen" alt="Imagen del autor"></td>
                 <td>{{item.libreriaMaterialId}}</td>
                 <td>{{item.titulo}}</td>
-                <td>{{item.fechaPublicacion}}</td>
+                <td>{{item.fechaPublicacion | date:'yyyy-MM-dd'}}</td>
                 <td>{{item.autorLibro}}</td>
                 <td>$ {{item.precio}}</td>
                 <td>{{item.iva}}</td>

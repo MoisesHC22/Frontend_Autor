@@ -1,17 +1,31 @@
-<div>
-    @for (item of Libro; track $index)
-    {
-        <div>
-            <img id="img" [src]="'data:imagen/png;base64,' + item.imagen" alt="Imagen del autor">
-               
-            <div class="Informacion">
-                <h3 class="TituloLibro">{{item.titulo}}</h3>
-                <p class="PrecioLibro">$ {{item.precio}}</p>
-                <p>{{item.fechaPublicacion}}</p>
-                <p>{{item.iva}}</p>
-            </div>
 
-            <button>Agregar al carrito</button>
+<div class="centrar">
+  <div class="ContProducto">
+
+        <div class="Margen">
+            
+            <div class="Contenido">
+            <img id="img" [src]="'data:imagen/png;base64,' + Libro.imagen" alt="Imagen del libro">
+               
+            <div class="ContInformacion">
+                <h1 class="TituloLibro">{{Libro.titulo}}</h1>
+
+                <div class="ContAutor">
+                    <img id="ImgAutor" [src]="'data:imagen/png;base64,' + autor.imagen" alt="Imagen del libro">
+                    <h4 id="NomAutor">{{autor.nombre}} {{autor.apellido}}</h4>
+                </div>
+                
+                <p>Año de publicación: {{Libro.fechaPublicacion | date:'yyyy-MM-dd'}}</p>
+                <p>{{Libro.descripcion}}</p>
+
+                <div class="BtnCentrado">
+                   <button class="Agregar" (click)="AgregarAlCarrito(Libro.libreriaMaterialId)">
+                    <fa-icon id="Icono" [icon]="faCartPlus"></fa-icon> <span id="Precio">$ {{Libro.precioConIva}}</span>
+                   </button>
+                </div>
+            </div>
         </div>
-    }
+
+        </div>
+  </div>
 </div>

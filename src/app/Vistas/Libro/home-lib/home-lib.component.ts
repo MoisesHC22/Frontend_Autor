@@ -26,7 +26,9 @@ export class HomeLibComponent implements OnInit {
 
   LibroLista: LibroInterface[]=[];
   faMagnifyingGlass = faMagnifyingGlass;
+
   showModal = false;
+  
   showAnimation = false;
   animationOptions: AnimationOptions = { 
     path: '/Animaciones/ErrorCarga.json' 

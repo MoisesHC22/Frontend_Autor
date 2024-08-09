@@ -37,14 +37,15 @@
 
     th, td{
         font-family: "Kanit", sans-serif;
-        padding: 15px;
+        padding: 8px;
         text-align: center;
         border-bottom: 1px solid #ddd;
     }
 
     #img{
-        width: 100px;
-        height: 100px;
+        width: 40px;
+        height: 60px;
+        border-radius: 10px;
     }
 }
 

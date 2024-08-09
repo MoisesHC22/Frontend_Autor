@@ -6,4 +6,8 @@ export interface LibroInterface{
     autorLibro?: string;
     iva?: number;
     imagen?: string;
+    descripcion?: string;
+    genero?: string;
+    cupon?: number;
+    precioConIva?: number;
 }

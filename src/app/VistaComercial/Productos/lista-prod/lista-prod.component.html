@@ -7,15 +7,23 @@
          <div class="Producto">
             
             <div (click)="MasInformacion(item.libreriaMaterialId)">
-            <img id="img" [src]="'data:imagen/png;base64,' + item.imagen" alt="Imagen del autor">
+               <img id="img" [src]="'data:imagen/png;base64,' + item.imagen" alt="Imagen del autor">
                
-            <div class="Informacion">
-                <h3 class="TituloLibro">{{item.titulo}}</h3>
-                <p class="PrecioLibro">$ {{item.precio}}</p>
-            </div>
-        </div>
+               <div class="Informacion">
+                   <h3 class="TituloLibro">{{item.titulo}}</h3>
 
-            <button class="AgregarProducto" (click)="AgregarAlCarrito(item.libreriaMaterialId)">Agregar</button>
+                   <div class="ContPrecio">
+                      <p class="PrecioLibro">$ {{item.precioConIva}}</p>
+                      <fa-icon *ngIf="item.cupon !== undefined && item.cupon > 1" id="Icono" [icon]="faTag"></fa-icon> 
+                   </div>
+                   
+               </div>
+            </div >
+
+            <div class="contenedorBtn">
+                <button class="AgregarProducto" (click)="AgregarAlCarrito(item.libreriaMaterialId)"><fa-icon id="Icono" [icon]="faPlus"></fa-icon></button>
+            </div>
+
          </div>      
         }
     </div>
@@ -31,4 +39,7 @@
 
         <h3 class="Alerta">Ocurrio un error!</h3>
     </div>
-  </ng-template>
+</ng-template>
+
+<button (click)="MostrarListCarrito()">Prueba</button>
+<button (click)="vaciarCarrito()">Elimar todo</button>

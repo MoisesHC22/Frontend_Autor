@@ -1,5 +1,5 @@
 export interface CuponInterface {
-    cupoId?: number;
+    cuponId?: number;
     cuponCode?: string;
     porcetanjeDescuento?: number;
     descuentoMinimo?: number;

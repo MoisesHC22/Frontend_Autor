@@ -6,10 +6,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
+import { faPlus, faTag} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CarritoDeCompraComponent } from "../../carrito-de-compra/carrito-de-compra.component";
+
 @Component({
   selector: 'app-lista-prod',
   standalone: true,
-  imports: [LottieComponent, ReactiveFormsModule, FormsModule, CommonModule],
+  imports: [LottieComponent, ReactiveFormsModule, FormsModule, CommonModule, FontAwesomeModule, CarritoDeCompraComponent],
   templateUrl: './lista-prod.component.html',
   styleUrl: './lista-prod.component.css'
 })
@@ -22,23 +26,15 @@ showAnimation = false;
 animationOptions: AnimationOptions = { 
   path: '/Animaciones/Libros.json' 
 };
+faPlus = faPlus;
+faTag = faTag;
 
 carrito: { libreriaMaterialId: string, cantidad: number}[] =[];
 
 ngOnInit(): void {
   this.GetLibros();
-  this.Funciones.filtro$.subscribe(filtro => {
-    this.filtro = filtro;
-    this.ConsultarFiltro(filtro);
-
-    const carritoGuardado = localStorage.getItem('carrito');
-    if( carritoGuardado){
-      this.carrito = JSON.parse(carritoGuardado);
-    }else{
-      this.carrito = [];
-    }
-  })
 }
+
 
 GetLibros(): void{
   this.Funciones.GetLibros().subscribe({
@@ -71,24 +67,28 @@ ConsultarFiltro(parametro: string): void{
 }
 
 MasInformacion(id?: string): void{
-   this.rutas.navigate(['/Informacion', id]);
-}
-
-AgregarAlCarrito(id?: string): void{
-
   if(id){
-    const productoExistente = this.carrito.find(item => item.libreriaMaterialId === id);
-
-      if(productoExistente){
-        productoExistente.cantidad += 1;
-      } else {
-        this.carrito.push({libreriaMaterialId: id, cantidad: 1});
-      }
-
-      localStorage.setItem('carrito', JSON.stringify(this.carrito));
-      
-      console.log(this.carrito);
+    this.rutas.navigate(['/Informacion', id]);
+  } else {
+    console.error('No se encontro el Libro');
   }
- }
+   
+   
+}
+
+AgregarAlCarrito(id?: string): void {
+  this.Funciones.agregarAlCarrito(id!);
+}
+
+MostrarListCarrito(): void{
+ const carrito = this.Funciones.obtenerListaCarrito();
+  console.log('Contenido de carrito: ' , carrito);
+}
+
+vaciarCarrito(): void {
+  this.Funciones.vaciarCarrito();
+  this.MostrarListCarrito();
+}
 
 }
+

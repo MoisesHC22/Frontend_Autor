@@ -1,2 +1,62 @@
+<div class="Fondo">
 
-<button>Pagar</button>
+<div class="ContCarrito">
+   <div class="contenedorCabecera">
+      <span class="close" (click)="close()">&times;</span>
+      <h3>Mi carrito de compra</h3>
+   </div>
+
+   <div class="centrar">
+
+   <div class="ListaProd">
+    <ul>
+    @for (item of carrito.listaDeProductos; track $index) {
+        <li>
+         <div class="Contenedor">
+
+          <div class="ContenedorProducto">
+            <div class="Inf">
+               <img id="img" [src]="'data:imagen/png;base64,' + item.imagen" alt="Imagen del producto">
+               
+               <div class="Descripcion">
+                  <h4>{{item.tituloLibro}}</h4>
+                  <p id="autor">{{item.autor}}</p>
+                  <p id="unitario">$ {{item.precio}} </p>
+               </div>
+
+            </div>
+
+            <div class="ContenedorImportante">
+               <div class="contendorAcciones">
+                  <button class="btn izq" (click)="CambiarCantidad(item.libreriaMaterialId, 'disminuir')">-</button>
+                    <p class="cantidad">{{item.cantidad}}</p>
+                  <button class="btn der" (click)="CambiarCantidad(item.libreriaMaterialId, 'aumentar')">+</button>
+               </div>
+               
+               <h3 id="subtotal">$ {{item.precioTotal}}</h3>
+            </div>
+
+         </div>
+         </div>
+
+        </li>
+      }
+    </ul>
+   </div>
+</div>
+
+<div class="contenedorPagar">
+   <div class="contenedorCalculo">
+     <h4>Cantidad: {{totalCantidad}} </h4>
+     <h3>Total: $ {{totalPrecio}}</h3>
+   </div>
+
+   <div class="contenedorBoton">
+     <button id="Pagar" (click)="Pagar()">Pagar</button>
+   </div>
+</div>
+
+</div>
+
+
+</div>

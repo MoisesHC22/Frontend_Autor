@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   background-color: #292929;
-  height: 50px;
+  height: 60px;
   width: 100%;
   margin: 0;
 
@@ -21,8 +21,8 @@
         
         .contBuscar{
             border-radius: 5px;
-            width: 300px;
-            height: 15px;
+            width: 400px;
+            height: 25px;
             border: none;
         }
     }
